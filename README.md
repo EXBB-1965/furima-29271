@@ -6,6 +6,8 @@
 | :-------------------: | :----: | :-----------------------: |
 | nickname              | string | null: false               |
 | email                 | string | null: false, unique: true |
+| password              | string | null: false, unique: true |
+| password confirmation | string | null: false, unique: true |
 | family_name           | string | null: false               |
 | first_name            | string | null: false               |
 | family_name_kana      | string | null: false               |
@@ -15,7 +17,7 @@
 ### Association
 
 - has_many :products
-- has_many :purchasers
+- has_many :orders
 
 ## products テーブル
 
@@ -34,7 +36,7 @@
 ### Association
 
 - belongs_to :user
-- has_one : purchaser
+- has_one :order
 - belongs_to_active_hash :category
 - belongs_to_active_hash :status
 - belongs_to_active_hash :payer
