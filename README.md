@@ -45,8 +45,6 @@
 
 | Column        | Type       | Options                   |
 | :-----------: | :--------: | :-----------------------: |
-| product       | references | null: false, FK: true     |
-| user          | references | null: false, FK: true     |
 | order         | references | null: false, FK: true     |
 | post_code     | string     | null: false               |
 | prefecture_id | integer    | null: false               |
