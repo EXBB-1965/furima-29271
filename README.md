@@ -31,10 +31,10 @@
 | shipping_day_id  | integer    | null: false           |
 | price            | integer    | null: false           |
 
-## Association
+### Association
 
 - belongs_to :user
-- has_one : purchasers
+- has_one : purchaser
 - belongs_to_active_hash :category
 - belongs_to_active_hash :status
 - belongs_to_active_hash :payer
@@ -47,6 +47,7 @@
 | :-----------: | :--------: | :-----------------------: |
 | product       | references | null: false, FK: true     |
 | user          | references | null: false, FK: true     |
+| order         | references | null: false, FK: true     |
 | post_code     | string     | null: false               |
 | prefecture_id | integer    | null: false               |
 | city          | string     | null: false               |
@@ -56,19 +57,20 @@
 
 ### Association
 
-- belongs_to :user
-- belongs_to :product
 - belongs_to_active_hash :prefecture
-- has_one :order
+- belongs_to :order
+
 
 ## ordersテーブル
 
-| Column  | Type       | Options               |
-| :-----: | :--------: | :-------------------: |
-| user    | references | null: false, FK: true |
-| product | references | null: false, FK: true |
+| Column    | Type       | Options               |
+| :-------: | :--------: | :-------------------: |
+| user      | references | null: false, FK: true |
+| product   | references | null: false, FK: true |
+
 
 ### Association
 
 - belongs_to :user
 - belongs_to :product
+- has_one :purchaser
