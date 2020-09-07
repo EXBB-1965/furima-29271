@@ -1,2 +1,0 @@
-class ShippingDay < ApplicationRecord
-end
