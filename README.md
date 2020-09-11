@@ -15,10 +15,10 @@
 
 ### Association
 
-- has_many :products
+- has_many :items
 - has_many :orders
 
-## products テーブル
+## items テーブル
 
 | Column           | Type       | Options               |
 | :--------------: | :--------: | :-------------------: |
@@ -65,11 +65,11 @@
 | Column    | Type       | Options               |
 | :-------: | :--------: | :-------------------: |
 | user      | references | null: false, FK: true |
-| product   | references | null: false, FK: true |
+| item      | references | null: false, FK: true |
 
 
 ### Association
 
 - belongs_to :user
-- belongs_to :product
+- belongs_to :item
 - has_one :purchaser
