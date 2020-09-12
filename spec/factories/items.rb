@@ -1,14 +1,17 @@
 FactoryBot.define do
   factory :item do
-
-    name {Faker::Lorem.sentence}
-    discription {Faker::Lorem.sentences}
-    category_id {Faker::Number.number(1..11)}
-    status_id {Faker::Number.number(1..7)}
-    payer_id {Faker::Number.number(1..3)}
-    prefecture_id {Faker::Number.number(1..48)}
-    shipping_day_id {Faker::Number.number(1..4)}
-    price {Faker::Number.number(300..9999999)}
+    id {1}
+    image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/test_image.png'))}
+    name {"手"}
+    discription {"手です"}
+    category_id {2}
+    status_id {2}
+    payer_id {2}
+    prefecture_id {2}
+    shipping_day_id {2}
+    price {300}
+    created_at {Time.now}
+    updated_at {Time.now}
 
     association :user
   end
