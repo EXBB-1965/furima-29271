@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+
   describe '#create' do
+
     before do
       @user = FactoryBot.build(:user)
     end
@@ -29,7 +31,6 @@ RSpec.describe User, type: :model do
         @user.first_name_kana = "タカユキ"
         expect(@user).to be_valid
       end
-
     end
 
     context "新規登録できない場合" do
@@ -178,9 +179,6 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Birth date can't be blank")
       end
-
     end
-
   end
-
 end
