@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_sign_up, except: :index
+  before_action :move_to_sign_up, except: [:index, :show]
 
   def index
     @items = Item.order("created_at DESC")
@@ -18,6 +18,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    @item = Item.find(params[:id])
+  end
+
   private
 
   def move_to_sign_up
@@ -29,5 +33,4 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:image, :name, :discription, :price, :category_id, :status_id, :payer_id, :prefecture_id, :shipping_day_id).merge(user_id: current_user.id)
   end
-
 end
