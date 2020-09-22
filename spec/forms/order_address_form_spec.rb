@@ -9,7 +9,7 @@ RSpec.describe OrderAddressForm, type: :model do
 
     context "購入登録できる場合" do
 
-      it "buildeng以外の全ての項目が存在すれば登録できること" do
+      it "building以外の全ての項目が存在すれば登録できること" do
         @order.building = nil
         expect(@order).to be_valid
       end
