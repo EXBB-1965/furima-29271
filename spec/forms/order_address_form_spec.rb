@@ -88,6 +88,12 @@ RSpec.describe OrderAddressForm, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include("Phone number is invalid")
       end
+
+      it "phone_numberが12桁以上では登録できないこと" do
+        @order.phone_number = "09012345678910"
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Phone number is invalid")
+      end
     end
   end
 end

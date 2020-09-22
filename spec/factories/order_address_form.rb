@@ -5,6 +5,6 @@ FactoryBot.define do
     city {Faker::Address.city}
     address {Faker::Address.city}
     phone_number {Faker::Base.numerify('###########')}
-    #token {Faker::Number.number}
+    token {Faker::Number.number}
   end
 end
