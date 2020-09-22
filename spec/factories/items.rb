@@ -1,5 +1,4 @@
 FactoryBot.define do
-
   factory :item do
     id {1}
     image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/test_image.png'))}

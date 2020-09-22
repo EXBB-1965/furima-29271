@@ -126,18 +126,16 @@
     <%= link_to '新規投稿商品',"#", class: "subtitle" %>
     <ul class='item-lists'>
       <% if @items.present? %>
-        <li class='list'>
-          <%= link_to item_path(@items.ids) do %>
-            <% @items.each do |item| %>
+        <% @items.each do |item| %>
+          <li class='list'>
+            <%= link_to item_path(item.id), method: :get do %>
               <div class='item-img-content'>
-                  <%= image_tag item.image, class: "item-img" %>
-
-                  <%# 商品が売れていればsold outを表示しましょう %>
-                  <div class='sold-out'>
-                    <span>Sold Out!!</span>
-                  </div>
-                  <%# //商品が売れていればsold outを表示しましょう %>
-
+                <%= image_tag item.image, class: "item-img" %>
+                  <% if item.buyer_id.present? %>
+                    <div class='sold-out'>
+                      <span>Sold Out!!</span>
+                    </div>
+                  <% end %>
               </div>
               <div class='item-info'>
                 <h3 class='item-name'>
@@ -152,9 +150,8 @@
                 </div>
               </div>
             <% end %>
-          <% end %>
-        </li>
-
+          </li>
+        <% end %>
         <%# 商品がない場合のダミー %>
         <% else %>
           <li class='list'>
