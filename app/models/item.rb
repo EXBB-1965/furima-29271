@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :saler, class_name: "User", optional: true
   belongs_to :buyer, class_name: "User", optional: true
-  has_one_attached :image
+  has_one_attached :images
   has_one :order
   belongs_to_active_hash :category
   belongs_to_active_hash :status
