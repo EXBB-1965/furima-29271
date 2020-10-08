@@ -18,8 +18,8 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <div class="item-image", id="image-list", size="30*30" ></div>
         <%= f.file_field :images, name: 'item[images][]', id:"item-image" %>
+        <div id="image-list"></div>
       </div>
     </div>
     <%# /出品画像 %>
@@ -140,8 +140,12 @@
       <%=link_to 'もどる', root_path, class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
+    <% end %>
+    <% @item.images.each do |image| %>
+      <%= image_tag image, class: 'images' %>
+    <% end %>
   </div>
-  <% end %>
+
 
   <footer class="items-sell-footer">
     <ul class="menu">
