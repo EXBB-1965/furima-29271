@@ -20,9 +20,6 @@
         </p>
         <%= f.file_field :images, name: 'item[images][]', id:"item-image" %>
         <div id="image-list"></div>
-        <% @item.images.each do |image| %>
-          <%= image_tag image, class: 'images' %>
-        <% end %>
       </div>
     </div>
     <%# /出品画像 %>
