@@ -23,7 +23,7 @@ app/assets/stylesheets/items/new.css %>
         <%= f.file_field :images, name: 'item[images][]', id: "item-image" %>
         <div id="image-list"></div>
         <% @item.images.each do |image| %>
-          <%= image_tag image.variant(resize: '100x100'), class: 'images' %>
+          <%= image_tag image, class: 'images' %>
         <% end %>
       </div>
     </div>

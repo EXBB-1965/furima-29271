@@ -8,9 +8,7 @@
     </h2>
     <div class='item-img-content'>
       <% @item.images.each do |image| %>
-        <div class="item-box-image">
         <%= image_tag image, class: 'item-box-img' %>
-        </div>
       <% end %>
 
       <% if @item.buyer_id.present? %>
