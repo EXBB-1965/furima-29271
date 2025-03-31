@@ -10,6 +10,29 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_day
   belongs_to_active_hash :prefecture
 
+  # 検索用のスコープ
+  scope :search, ->(keyword) {
+    return all unless keyword.present?
+    where('name LIKE ? OR discription LIKE ?', "%#{keyword}%", "%#{keyword}%")
+  }
+
+  scope :filter_by_category, ->(category_id) {
+    return all unless category_id.present?
+    where(category_id: category_id)
+  }
+
+  scope :filter_by_price_range, ->(min_price, max_price) {
+    query = all
+    query = query.where('price >= ?', min_price) if min_price.present?
+    query = query.where('price <= ?', max_price) if max_price.present?
+    query
+  }
+
+  scope :filter_by_prefecture, ->(prefecture_id) {
+    return all unless prefecture_id.present?
+    where(prefecture_id: prefecture_id)
+  }
+
   with_options presence: true do
     validates :name, length: { maximum: 40 }
     validates :discription

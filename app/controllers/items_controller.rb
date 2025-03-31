@@ -3,7 +3,12 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @items = Item.all.order("created_at DESC")
+    @items = Item.all
+    @items = @items.search(params[:search])
+    @items = @items.filter_by_category(params[:category_id])
+    @items = @items.filter_by_price_range(params[:min_price], params[:max_price])
+    @items = @items.filter_by_prefecture(params[:prefecture_id])
+    @items = @items.order("created_at DESC").page(params[:page]).per(12)
   end
 
   def new

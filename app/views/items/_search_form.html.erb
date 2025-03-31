@@ -1,0 +1,52 @@
+<div class="search-container">
+  <%= form_with(url: items_path, method: :get, class: "search-form", local: true) do |f| %>
+    <div class="search-field">
+      <%= f.text_field :search, 
+          value: params[:search],
+          placeholder: "キーワードで検索", 
+          class: "search-input" %>
+    </div>
+    
+    <div class="filter-section">
+      <div class="filter-group">
+        <label>カテゴリー</label>
+        <%= f.collection_select :category_id, 
+            Category.all, 
+            :id, 
+            :name, 
+            { include_blank: "すべて", selected: params[:category_id] }, 
+            class: "filter-select" %>
+      </div>
+      
+      <div class="filter-group">
+        <label>価格帯</label>
+        <div class="price-range">
+          <%= f.number_field :min_price, 
+              value: params[:min_price],
+              placeholder: "最小", 
+              class: "price-input" %>
+          <span>〜</span>
+          <%= f.number_field :max_price, 
+              value: params[:max_price],
+              placeholder: "最大", 
+              class: "price-input" %>
+        </div>
+      </div>
+      
+      <div class="filter-group">
+        <label>都道府県</label>
+        <%= f.collection_select :prefecture_id, 
+            Prefecture.all, 
+            :id, 
+            :name, 
+            { include_blank: "すべて", selected: params[:prefecture_id] }, 
+            class: "filter-select" %>
+      </div>
+    </div>
+
+    <div class="search-actions">
+      <%= f.submit "検索", class: "search-button" %>
+      <%= link_to "条件をクリア", items_path, class: "clear-button" %>
+    </div>
+  <% end %>
+</div> 

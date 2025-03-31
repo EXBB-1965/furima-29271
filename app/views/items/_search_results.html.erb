@@ -1,0 +1,36 @@
+<div class="search-results">
+  <% if @items.any? %>
+    <div class="results-count">
+      検索結果: <%= @items.total_count %>件
+    </div>
+    
+    <div class="items-grid">
+      <% @items.each do |item| %>
+        <div class="item-card">
+          <%= link_to item_path(item) do %>
+            <div class="item-image">
+              <% if item.images.attached? %>
+                <%= image_tag item.images.first, class: "item-img" %>
+              <% else %>
+                <%= image_tag "no-image.png", class: "item-img" %>
+              <% end %>
+            </div>
+            <div class="item-info">
+              <h3 class="item-name"><%= item.name %></h3>
+              <div class="item-price">¥<%= item.price.to_s(:delimited) %></div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="pagination">
+      <%= paginate @items %>
+    </div>
+  <% else %>
+    <div class="no-results">
+      <p>検索結果が見つかりませんでした。</p>
+      <p>別のキーワードや条件で検索してみてください。</p>
+    </div>
+  <% end %>
+</div> 
